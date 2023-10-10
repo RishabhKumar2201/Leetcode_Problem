@@ -34,7 +34,9 @@ class DriverClass {
 /*Complete the function below*/
 
 class Solution {
-    // Function to detect cycle in a directed graph.
+    
+    // THE DFS TRAVERSAL WILL BE APPLIED HERE 
+    
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean[] vis = new boolean[V];
         boolean[] pathVis = new boolean[V];
@@ -48,26 +50,6 @@ class Solution {
         }
         return false;
     }
-    
-    /*private boolean cycleCheck(int i, ArrayList<ArrayList<Integer>> adj, 
-    boolean[] vis, boolean[] pathVis){
-        vis[i] = true;
-        pathVis[i] = true;
-        
-        for(int it : adj.get(i)){
-            if(!vis[it]){
-                if(cycleCheck(it, adj, vis, pathVis) == true){
-                    return true;
-                }
-            }
-            else if(vis[it] == true && pathVis[it] == true){
-                return true;
-            }
-        }
-        pathVis[i] = false;
-        return false;
-        
-    }*/
     
     private boolean cycleCheck(int i, ArrayList<ArrayList<Integer>> adj, 
     boolean[] vis, boolean[] pathVis){

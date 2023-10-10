@@ -37,33 +37,55 @@ class Solution {
     // Function to detect cycle in a directed graph.
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean[] vis = new boolean[V];
-        boolean[] dfsvis = new boolean[V];
+        boolean[] pathVis = new boolean[V];
         
         for(int i = 0; i < V; i++){
-            if(!vis[i] && cycleCheck(i, adj, vis, dfsvis)){
-                return true;
-            }
+            if(!vis[i]){
+                if(cycleCheck(i, adj, vis, pathVis) == true){
+                    return true;
+                }
+            } 
         }
         return false;
     }
     
-    private boolean cycleCheck(int i, ArrayList<ArrayList<Integer>> adj, 
-    boolean[] vis, boolean[] dfsvis){
+    /*private boolean cycleCheck(int i, ArrayList<ArrayList<Integer>> adj, 
+    boolean[] vis, boolean[] pathVis){
         vis[i] = true;
-        dfsvis[i] = true;
+        pathVis[i] = true;
         
         for(int it : adj.get(i)){
-            if( !vis[it] ){
-                if(cycleCheck(it, adj, vis, dfsvis)){
+            if(!vis[it]){
+                if(cycleCheck(it, adj, vis, pathVis) == true){
                     return true;
                 }
             }
-            else if(vis[it] == true && dfsvis[it] == true){
+            else if(vis[it] == true && pathVis[it] == true){
                 return true;
             }
         }
-        dfsvis[i] = false;
+        pathVis[i] = false;
         return false;
         
+    }*/
+    
+    private boolean cycleCheck(int i, ArrayList<ArrayList<Integer>> adj, 
+    boolean[] vis, boolean[] pathVis){
+        
+        vis[i] = true;
+        pathVis[i] = true;
+        
+        for(int it : adj.get(i)){
+            if(vis[it] == false){
+                if(cycleCheck(it, adj, vis, pathVis) == true){
+                    return true;
+                }
+            }
+            else if(vis[it] == true && pathVis[it] == true){
+                return true;
+            }
+        }
+        pathVis[i] = false;
+        return false;
     }
 }

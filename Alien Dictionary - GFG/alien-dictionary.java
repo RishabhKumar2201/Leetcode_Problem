@@ -138,12 +138,12 @@ class Solution
         }
         
         List<Integer> arr = topoSort(K, adj);
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         for(int i : arr){
-            str = str + (char)(i + (int)('a'));
+            sb.append((char)(i + (int)('a')));
         }
         
-        return str;
+        return sb.toString();
     }
 }
 

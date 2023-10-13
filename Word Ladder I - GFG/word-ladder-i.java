@@ -53,7 +53,6 @@ class Solution
         q.add(new Pair(startWord, 1));
         while(!q.isEmpty()){
             
-            int size = q.size();
             String word = q.peek().first;
             int step = q.peek().second; 
             q.remove();

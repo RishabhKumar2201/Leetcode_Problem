@@ -69,13 +69,14 @@ class Solution
     static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
     {
         //PriorityQueue<Pair> pq = new PriorityQueue<Pair>((x,y) -> x.distance - y.distance);
-        Queue<Pair> pq = new LinkedList<>();
+        
+        Queue<Pair> pq = new LinkedList<>(); //We can use PriorityQueue Also similarly
         int[] dist = new int[V];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[S] = 0;
         pq.add(new Pair(0, S));
         
-        while(pq.size() != 0){
+        while(!pq.isEmpty()){
             
             int dis = pq.peek().distance;
             int node = pq.peek().node;
@@ -90,9 +91,7 @@ class Solution
                     pq.add(new Pair(dis + edgeWeight, adjNode));
                 }
             }
-            
         }
-       
         return dist;
     }
 }

@@ -101,7 +101,7 @@ class Pair {
     int node;
     int distance;
 
-    Pair(int node, int distance) {
+    Pair(int distance, int node) {
         this.node = node;
         this.distance = distance;
     }
@@ -115,7 +115,7 @@ class Solution {
         int[] dist = new int[V];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[S] = 0;
-        pq.add(new Pair(S, 0));
+        pq.add(new Pair(0, S));
 
         while (!pq.isEmpty()) {
             int dis = pq.peek().distance;
@@ -128,7 +128,7 @@ class Solution {
 
                 if (dis + edgeWeight < dist[adjNode]) {
                     dist[adjNode] = dis + edgeWeight;
-                    pq.add(new Pair(adjNode, dis + edgeWeight));
+                    pq.add(new Pair(dis + edgeWeight, adjNode));
                 }
             }
         }

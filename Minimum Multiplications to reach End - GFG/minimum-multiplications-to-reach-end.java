@@ -50,20 +50,25 @@ class Solution {
         dist[start] = 0;
         
         while(!q.isEmpty()){
+            
             int size = q.size();
+            
             while(size-- > 0){
                 Pair it = q.peek();
                 q.remove();
+                
                 int steps = it.first;
                 int node = it.second;
+                
                 if(node == end){
                     return steps;
                 }
+                
                 for(int i = 0; i < arr.length; i++){
                     int num = (arr[i] * node) % 100000;
+                    
                     if(steps + 1 < dist[num]){
                         dist[num] = steps + 1;
-                        
                         q.add(new Pair(steps + 1, num));
                     }
                 }
@@ -74,4 +79,4 @@ class Solution {
         }
         return dist[end];
     }
-}
+} 

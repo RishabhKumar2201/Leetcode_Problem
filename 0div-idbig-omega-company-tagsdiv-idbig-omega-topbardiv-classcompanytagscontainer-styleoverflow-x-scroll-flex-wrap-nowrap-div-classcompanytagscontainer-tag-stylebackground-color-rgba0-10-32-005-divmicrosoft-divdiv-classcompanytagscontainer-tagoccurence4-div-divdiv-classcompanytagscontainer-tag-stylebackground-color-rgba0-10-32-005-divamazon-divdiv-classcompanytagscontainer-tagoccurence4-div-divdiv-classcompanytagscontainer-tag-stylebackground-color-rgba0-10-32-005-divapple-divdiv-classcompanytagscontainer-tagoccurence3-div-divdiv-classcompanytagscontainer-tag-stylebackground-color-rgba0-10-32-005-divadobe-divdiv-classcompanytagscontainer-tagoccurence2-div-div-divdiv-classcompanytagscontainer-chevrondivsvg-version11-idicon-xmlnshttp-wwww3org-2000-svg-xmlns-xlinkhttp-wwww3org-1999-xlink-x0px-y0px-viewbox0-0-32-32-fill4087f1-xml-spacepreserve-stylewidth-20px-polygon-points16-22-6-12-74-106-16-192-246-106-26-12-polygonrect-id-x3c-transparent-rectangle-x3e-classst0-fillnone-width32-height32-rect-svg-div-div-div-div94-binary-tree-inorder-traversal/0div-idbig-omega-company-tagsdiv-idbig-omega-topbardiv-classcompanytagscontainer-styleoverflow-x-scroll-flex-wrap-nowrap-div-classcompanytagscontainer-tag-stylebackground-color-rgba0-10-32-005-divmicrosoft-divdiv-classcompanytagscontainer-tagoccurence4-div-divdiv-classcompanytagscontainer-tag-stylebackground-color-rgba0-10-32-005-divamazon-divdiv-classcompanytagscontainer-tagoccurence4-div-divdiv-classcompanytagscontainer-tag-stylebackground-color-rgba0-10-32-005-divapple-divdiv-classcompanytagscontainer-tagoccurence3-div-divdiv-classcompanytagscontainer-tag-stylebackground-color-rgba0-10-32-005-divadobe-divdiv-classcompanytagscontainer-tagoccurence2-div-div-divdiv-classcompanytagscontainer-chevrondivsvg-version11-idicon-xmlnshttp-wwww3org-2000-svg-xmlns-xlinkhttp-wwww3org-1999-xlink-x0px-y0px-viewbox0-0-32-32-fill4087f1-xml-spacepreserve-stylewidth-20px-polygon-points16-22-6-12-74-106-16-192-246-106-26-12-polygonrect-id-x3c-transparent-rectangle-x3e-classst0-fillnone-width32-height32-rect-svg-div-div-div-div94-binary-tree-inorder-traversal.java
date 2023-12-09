@@ -24,8 +24,7 @@ class Solution {
         inorderTraversal(root.left);
         list.add(root.val);
         inorderTraversal(root.right);
-        return list;
-        
+        return list;       
         
     }
 }
